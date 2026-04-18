@@ -8,6 +8,9 @@ public class CartItem {
 
     // Constructor initializes cart item with product and quantity
     public CartItem(Product product, int quantity) {
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("Quantity must be greater than 0");
+        }
         this.product = product;   // Assign product reference
         this.quantity = quantity;  // Assign quantity selected by customer
     }

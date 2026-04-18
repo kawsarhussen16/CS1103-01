@@ -1,4 +1,3 @@
-
 import com.ecommerce.CartItem;
 import com.ecommerce.Customer;
 import com.ecommerce.InvalidOrderException;
@@ -7,50 +6,59 @@ import com.ecommerce.orders.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// Main class is the entry point of the Java application
-// It demonstrates the full workflow of the e-commerce system
+// Entry point of the application
+// Demonstrates full e-commerce workflow: product browsing → cart → order → status update
 public class Main {
 
     public static void main(String[] args) {
 
-        // Creating product objects (available items in the store)
+        System.out.println("===== WELCOME TO E-COMMERCE SYSTEM =====\n");
+
+        // Creating products
         Product laptop = new Product(1, "Laptop", 1200, 5);
         Product phone = new Product(2, "Phone", 600, 10);
 
-        // Display product details
+        System.out.println("=== AVAILABLE PRODUCTS ===");
         laptop.displayProduct();
         phone.displayProduct();
 
-        // Creating a customer object
+        // Creating customer
         Customer customer = new Customer(101, "Kawsar");
 
-        // Customer adds products to cart with quantity
+        System.out.println("\n=== ADDING ITEMS TO CART ===");
         customer.addToCart(laptop, 1);
         customer.addToCart(phone, 2);
 
-        // Display cart items and total price
+        System.out.println("\n=== CART DETAILS ===");
         customer.viewCart();
 
         try {
-            // Validate if order can be placed (cart can not be empty)
+            // Validate cart before order placement
             customer.validateOrder();
 
-            // Convert cart items into a separate list for order processing
+            // Prepare order items
             List<CartItem> items = new ArrayList<>(customer.getCart());
 
-            // Create an order using customer cart data
+            System.out.println("\n=== PLACING ORDER ===");
+
+            // Create order
             Order order = new Order(5001, customer, items);
 
+            // Show initial order summary
             System.out.println(order.generateSummary());
 
-            // Update order status to SHIPPED
+            // Update order status
             order.updateStatus(OrderStatus.SHIPPED);
 
-            System.out.println("\nAfter Shipping:");
+            System.out.println("\n=== AFTER SHIPPING UPDATE ===");
             System.out.println(order.generateSummary());
+
         } catch (InvalidOrderException e) {
-            // Handle error if order cannot be placed
-            System.out.println("Error: " + e.getMessage());
+
+            // Handle invalid order scenarios
+            System.out.println("\nORDER FAILED: " + e.getMessage());
         }
+
+        System.out.println("\n===== THANK YOU FOR USING OUR SYSTEM =====");
     }
 }
