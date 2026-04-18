@@ -1,0 +1,43 @@
+# Compiled class files
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Build output directories
+bin/
+out/
+target/
+build/
+
+# VS Code settings
+.vscode/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Maven
+/logs/
+/dependency-reduced-pom.xml
+
+# Gradle
+.gradle/
+gradle-app.setting
