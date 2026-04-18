@@ -17,6 +17,14 @@ public class Product {
 
     // Constructor to initialize product details
     public Product(int productID, String name, double price, int stock) {
+        // Validate input parameters
+        if (price < 0) {
+            throw new IllegalArgumentException("Price cannot be negative");
+        }
+
+        if (stock < 0) {
+            throw new IllegalArgumentException("Stock cannot be negative");
+        }
         this.productID = productID; // Assign product ID
         this.name = name;           // Assign product name
         this.price = price;         // Assign product price
